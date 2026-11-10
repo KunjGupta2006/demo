@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  /* Modern High-End Digital Agency Palette */
+  --color-background: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F8FAFC;
+  --color-surface-card: #FFFFFF;
+  
+  --color-ink: #0A0D14;
+  --color-ink-light: #1E293B;
+  --color-muted: #64748B;
+  --color-muted-light: #94A3B8;
+  
+  /* Primary: Precision Electric Royal Blue */
+  --color-primary: #0066FF;
+  --color-primary-hover: #0052CC;
+  --color-primary-tint: #EFF6FF;
+  --color-primary-dark: #0A0F1D;
+  
+  /* Accent: Mint Emerald & Cerulean */
+  --color-accent: #10B981;
+  --color-accent-hover: #059669;
+  --color-accent-tint: #ECFDF5;
+
+  /* Modern Hairline Borders */
+  --color-border: #E2E8F0;
+  --color-border-subtle: #F1F5F9;
+  
+  /* Tailored Agency Radii */
+  --radius-card: 20px;
+  --radius-button: 9999px;
+  --radius-input: 12px;
+
+  /* Crisp Agency Shadows */
+  --shadow-soft: 0 2px 8px rgba(10, 13, 20, 0.04);
+  --shadow-card: 0 12px 30px -10px rgba(10, 13, 20, 0.08), 0 0 1px rgba(10, 13, 20, 0.05);
+  --shadow-elevated: 0 20px 40px -12px rgba(0, 102, 255, 0.12), 0 1px 3px rgba(10, 13, 20, 0.04);
+
+  /* Clean Modern Sans Typography - No Serifs */
+  --font-heading: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Base resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--color-background);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.03em;
+  color: var(--color-ink);
+}
+
+/* Minimalist Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Accessible skip to content */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: auto;
+  height: auto;
+  padding: 10px 22px;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-button);
+  box-shadow: var(--shadow-elevated);
+  z-index: 9999;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* Ultra-clean custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Horizontal scroll utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 4vw, 40px);
+  padding-right: clamp(20px, 4vw, 40px);
+}

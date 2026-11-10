@@ -1,0 +1,60 @@
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import type { ButtonHTMLAttributes } from "react";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0066FF] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none",
+  {
+    variants: {
+      variant: {
+        primary:
+          "bg-[#0066FF] text-white hover:bg-[#0052cc] shadow-sm hover:shadow-md",
+        secondary:
+          "bg-slate-100 text-slate-900 border border-slate-200 hover:bg-slate-200",
+        coral:
+          "bg-slate-900 text-white hover:bg-slate-800 shadow-sm",
+        amber:
+          "bg-[#0066FF] text-white hover:bg-[#0052cc] shadow-sm",
+        ghost:
+          "bg-transparent text-slate-700 hover:text-slate-950 hover:bg-slate-100",
+        outline:
+          "bg-transparent text-slate-900 border border-slate-200 hover:border-slate-900 hover:bg-slate-50",
+        whatsapp:
+          "bg-[#25D366] text-white hover:bg-[#1EBE5D] shadow-sm",
+      },
+      size: {
+        sm: "h-9 px-4 text-xs rounded-full",
+        md: "h-11 px-5 text-xs font-bold rounded-full",
+        lg: "h-12 px-7 text-sm font-bold rounded-full",
+        icon: "h-10 w-10 rounded-full",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+    },
+  }
+);
+
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
+
+export function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  ...props
+}: ButtonProps) {
+  const Comp = asChild ? Slot : "button";
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
+}
